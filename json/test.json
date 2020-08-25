@@ -1,0 +1,26 @@
+{
+	"initdata":{
+		"a": "apple",
+		"b": "banana"
+	},
+	"girlgroup":{
+		"blackpink":{"peopleCnt":5, "peopleIds":[1,2,3,12]},
+		"twice":{"peopleCnt":9, "peopleIds":[5,6,7,8,9,10,11,13]},
+		"hmm..":{"peopleCnt":0, "peopleIds":[]}
+	},
+	"people":[
+		{"peopleId":1, "name":"jisso", "test":["a","b","c"]},
+		{"peopleId":2, "name":"jennie", "test":["a"]},
+		{"peopleId":3, "name":"rose", "test":[]},
+		{"peopleId":4, "name":"나연", "test":["b"]},
+		{"peopleId":5, "name":"정연", "test":["c"]},
+		{"peopleId":6, "name":"모모", "test":["d","e"]},
+		{"peopleId":7, "name":"사나", "test":[]},
+		{"peopleId":8, "name":"지효", "test":[]},
+		{"peopleId":9, "name":"미나", "test":[]},
+		{"peopleId":10, "name":"다현", "test":["f"]},
+		{"peopleId":11, "name":"채영", "test":[]},
+		{"peopleId":12, "name":"lisa", "test":[]},
+		{"peopleId":13, "name":"쯔위", "test":[]}
+	]
+}
