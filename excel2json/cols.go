@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// hello 
 var (
 	Type_N = "n"
 	Type_NARR = "narr"
