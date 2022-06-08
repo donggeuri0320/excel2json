@@ -89,7 +89,7 @@ func (d *Table) SetFormat(titleStr string, subTitleArr []string, colTypes []stri
 		sb.WriteString("}")
 		d.RowFormat = sb.String()
 	} else {
-		d.TitleFormat = fmt.Sprintf("\"%s\"", titleStr) + ":[\r\n\t%s\r\n\t]"
+		d.TitleFormat = fmt.Sprintf("\"%s\"", titleStr) + ":[\r\n\t%s\r\n]"
 		sb := strings.Builder{}
 		sb.WriteString("\t{")
 		for i, v := range subTitleArr {

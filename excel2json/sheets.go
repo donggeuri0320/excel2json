@@ -67,7 +67,7 @@ func Parse(datas [][]string) []*Table {
 					}
 				}
 			}
-			
+
 			obj.SetFormat(titleStr, datas[rIdx][1:lenDefineCols+1], datas[rIdx-1][1:lenDefineCols+1])
 			continue
 		}
@@ -80,7 +80,7 @@ func Parse(datas [][]string) []*Table {
 			}
 
 			if *obj.ColTypes[i-1] == Type_N && datas[rIdx][i] != "" {
-				_, err := strconv.Atoi(datas[rIdx][i])
+				_, err := strconv.ParseFloat(datas[rIdx][i], 64)
 				if err != nil {
 					log.Fatal("`", titleStr, "`json data type error! row:", readline, ", col:", i, ", wrong data: ", datas[rIdx][i])
 				}
@@ -125,5 +125,5 @@ func Parse(datas [][]string) []*Table {
 		obj.AddRow(colDatas)
 
 	}
-	return objs;
+	return objs
 }

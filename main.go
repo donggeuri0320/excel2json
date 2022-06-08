@@ -41,13 +41,26 @@ func main()  {
 			for _, name := range xf.GetSheetMap() {
 				data := xf.GetRows(name)
 				tables := e2j.Parse(data)
-				excel2json.AddTables(tables)
+				//excel2json.AddTables(tables)
+				for _, table := range tables {
+					table2json(table)
+				}
 			}
 
-			of, err := os.Create("./json/" + strings.ReplaceAll(xlsxFileName, ".xlsx", ".json"))
-			of.WriteString(excel2json.ToString())
+			//of, err := os.Create("./json/" + strings.ReplaceAll(xlsxFileName, ".xlsx", ".json"))
+			//of.WriteString(excel2json.ToString())
 		}(f.Name())
 	}
 	wg.Wait()
 	log.Println("Done!")
+}
+
+func table2json(table *e2j.Table)  {
+	tt := table.ToString()
+	idx := strings.Index(tt, ":")
+	of, err := os.Create("./json/" + tt[1:idx-1] + ".json")
+	of.WriteString(tt[idx+1:])
+	if err != nil {
+		log.Fatal(err)
+	}
 }
