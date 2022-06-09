@@ -1,7 +1,9 @@
 package excel2json
 
 import (
+	"fmt"
 	"github.com/labstack/gommon/log"
+	"math"
 	"strconv"
 	"strings"
 )
@@ -80,9 +82,19 @@ func Parse(datas [][]string) []*Table {
 			}
 
 			if *obj.ColTypes[i-1] == Type_N && datas[rIdx][i] != "" {
-				_, err := strconv.ParseFloat(datas[rIdx][i], 64)
+				v, err := strconv.ParseFloat(datas[rIdx][i], 64)
 				if err != nil {
 					log.Fatal("`", titleStr, "`json data type error! row:", readline, ", col:", i, ", wrong data: ", datas[rIdx][i])
+				}
+				if strings.Contains(datas[rIdx][i], ".") {
+					var temp float64 = math.Round(v * 1000.0)
+					cv := fmt.Sprintf("%f", temp / 1000)
+					dIdx := strings.Index(cv, ".")
+					if dIdx + 4 < len(cv)-1 {
+						datas[rIdx][i] = cv[:dIdx+5]
+					} else {
+						datas[rIdx][i] = cv
+					}
 				}
 			} else if *obj.ColTypes[i-1] == Type_NARR && datas[rIdx][i] != "" {
 				// temp := strings.ReplaceAll(, "~", "")
