@@ -61,7 +61,9 @@ func (d *ColData) ToString() string {
 		if d.Value == "" {
 			return "\"\""
 		}
-		return fmt.Sprintf("\"%s\"", strings.ReplaceAll(d.Value, "\"", "\\\"") )
+		filter := strings.ReplaceAll(d.Value, "\"", "\\\"")
+		filter = strings.ReplaceAll(filter, "\n", "\\n")
+		return fmt.Sprintf("\"%s\"", filter)
 	case Type_SARR:
 		if d.Value == "" {
 			return "[]"
@@ -70,7 +72,9 @@ func (d *ColData) ToString() string {
 		sArr := strings.Split(strings.ReplaceAll(d.Value, " ", ""), ",")
 		lenSArr := len(sArr)
 		for i:=0; i<lenSArr; i++ {
-			sArr[i] = strings.ReplaceAll(sArr[i], "\"", "\\\"")
+			filter := strings.ReplaceAll(sArr[i], "\"", "\\\"")
+			filter = strings.ReplaceAll(filter, "\n", "\\n")
+			sArr[i] = filter
 		}
 
 		return fmt.Sprintf("[\"%s\"]", strings.Join(sArr, "\",\""))

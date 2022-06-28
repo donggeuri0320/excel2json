@@ -69,7 +69,7 @@ func Parse(datas [][]string) []*Table {
 					}
 				}
 			}
-
+			
 			obj.SetFormat(titleStr, datas[rIdx][1:lenDefineCols+1], datas[rIdx-1][1:lenDefineCols+1])
 			continue
 		}
